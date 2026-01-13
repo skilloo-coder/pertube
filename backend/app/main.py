@@ -1,12 +1,11 @@
 from fastapi import FastAPI
 from .db import engine
+from .routers import interests
 
 app = FastAPI(title="Pertube API")
 
+app.include_router(interests.router)
+
 @app.get("/")
 def root():
-    try:
-        with engine.connect() as conn:
-            return {"status": "ok", "db": "connected"}
-    except Exception as e:
-        return {"status": "error", "message": str(e)}
+    return {"status": "ok"}
