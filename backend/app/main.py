@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.db import engine
+from .db import engine
 
 app = FastAPI(title="Pertube API")
 
